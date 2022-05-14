@@ -1,7 +1,6 @@
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
-import org.apache.tools.ant.taskdefs.condition.Os
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -135,7 +134,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.learnreactnavigation"
+        applicationId "com.learnreactnative"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -157,16 +156,7 @@ android {
                     cppFlags "-std=c++17"
                     // Make sure this target name is the same you specify inside the
                     // src/main/jni/Android.mk file for the `LOCAL_MODULE` variable.
-                    targets "learnreactnavigation_appmodules"
-                    // Fix for windows limit on number of character in file paths and in command lines
-                    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                        arguments "NDK_APP_SHORT_COMMANDS=true"
-                    }
-                }
-            }
-            if (!enableSeparateBuildPerCPUArchitecture) {
-                ndk {
-                    abiFilters (*reactNativeArchitectures())
+                    targets "learnreactnative_appmodules"
                 }
             }
         }
